@@ -1,0 +1,42 @@
+//lecture-1=> Example code for Input & writing Output 
+
+const readline = require('readline');
+const rl=readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+});
+rl.question("Please enter your name:",(name)=>{
+    console.log("You entered:"+name);
+    rl.close();
+})
+rl.on('close',()=>{
+    console.log("Interface closed");
+    process.exit(0);
+})
+/---------------------------------------------------------
+//lecture-2=> Reading & writing to a file
+
+const readline = require('readline');
+const fs = require('fs');
+
+let textIn = fs.readFileSync('./Files/input.txt','utf-8');
+console.log(textIn);
+let content = `Data read from input.txt: ${textIn}.\n Date is ${new Date()}`;
+fs.writeFileSync('./Files/output.txt',content);
+
+/----------------------------------------------------------------
+//lecture-3=> Creating a simple web server
+const readline = require('readline');
+const fs = require('fs');
+const http = require('http');
+
+Step(1) Creating the server
+const server = http.createServer((request,response)=>{
+    response.end('Hello from the server.');
+    console.log('A new request received.');
+});
+
+Step(2) Start the server
+server.listen(8000,'127.0.0.1',()=>{
+    console.log('Server has started.');
+})
